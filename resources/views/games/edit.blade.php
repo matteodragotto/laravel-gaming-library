@@ -66,7 +66,7 @@
                 <input type="file" name="cover_image" id="cover_image" class="form-control">
 
                 @if ($game->cover_image)
-                    <div class="container">
+                    <div class="container my-2">
                         <img src="{{ asset('storage/' . $game->cover_image) }}" class="img-fluid w-25 mb-4"
                             alt="{{ $game->title }}">
                     </div>
