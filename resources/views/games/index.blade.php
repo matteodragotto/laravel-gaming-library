@@ -18,6 +18,7 @@
                             <h5 class="card-title">{{ $game->title }}</h5>
                             <p class="card-text">Data di rilascio: {{ $game->release_date }}</p>
                             <p class="card-text">Sviluppatore: {{ $game->developer }}</p>
+                            <a href="{{ route('games.show', $game) }}" class="btn btn-primary">Dettagli</a>
                         </div>
                     </div>
                 </div>
