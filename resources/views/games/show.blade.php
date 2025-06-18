@@ -63,13 +63,15 @@
                     </small>
                 @endif
                 @if (count($game->genres) > 0)
-                    <small>
+                    <p>
                         Generi:
                         @foreach ($game->genres as $genre)
-                            <span>{{ $genre->name }}</span>
+                            <span class="badge text-bg-dark">{{ $genre->name }}</span>
                         @endforeach
-                    </small>
-                    <p>{{ $game->description }}</p>
+                    </p>
+                @endif
+                <p>{{ $game->description }}</p>
+
 
             </div>
         </div>

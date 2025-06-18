@@ -4,8 +4,7 @@
 
 @section('content')
     <div class="container text-center my-4">
-        <h1>Games</h1>
-        <p>Welcome to the games page!</p>
+        <h1>Benvenuto nella pagina di gestione della libreria giochi</h1>
         <a href="{{ route('games.create') }}" class="btn btn-primary">Aggiungi gioco</a>
 
     </div>

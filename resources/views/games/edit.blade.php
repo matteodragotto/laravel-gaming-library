@@ -32,7 +32,8 @@
                     required>
             </div>
 
-            <div class="mb-3 d-flex flex-wrap gap-3">
+            <h5>Piattaforme:</h5>
+            <div class="form-control mb-3 d-flex flex-wrap gap-3">
                 @foreach ($platforms as $platform)
                     <div class="form-check">
                         <input type="checkbox" name="platforms[]" id="platform_{{ $platform->id }}"
@@ -43,7 +44,8 @@
                 @endforeach
             </div>
 
-            <div class="mb-3 d-flex flex-wrap gap-3">
+            <h5>Generi:</h5>
+            <div class="form-control mb-3 d-flex flex-wrap gap-3">
                 @foreach ($genres as $genre)
                     <div class="form-check">
                         <input type="checkbox" name="genres[]" id="genres_{{ $genre->id }}" value="{{ $genre->id }}"
