@@ -53,7 +53,24 @@
                             alt="{{ $game->title }}">
                     </div>
                 @endif
-                <p>{{ $game->description }}</p>
+                @if (count($game->platforms) > 0)
+                    <small>
+                        Piattaforme:
+                        @foreach ($game->platforms as $platform)
+                            <span class="badge"
+                                style="background-color: {{ $platform->color }}">{{ $platform->name }}</span>
+                        @endforeach
+                    </small>
+                @endif
+                @if (count($game->genres) > 0)
+                    <small>
+                        Generi:
+                        @foreach ($game->genres as $genre)
+                            <span>{{ $genre->name }}</span>
+                        @endforeach
+                    </small>
+                    <p>{{ $game->description }}</p>
+
             </div>
         </div>
     </div>

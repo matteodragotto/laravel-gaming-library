@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Game;
+use App\Models\Genre;
+use App\Models\Platform;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -25,7 +27,10 @@ class GamesController extends Controller
      */
     public function create()
     {
-        return view('games.create');
+        $platforms = Platform::all();
+        $genres = Genre::all();
+
+        return view('games.create', compact('platforms', 'genres'));
     }
 
     /**
@@ -51,6 +56,14 @@ class GamesController extends Controller
         }
         $newGame->save();
 
+        if (request()->has('platforms')) {
+            $newGame->platforms()->attach($data['platforms']);
+        }
+
+        if (request()->has('genres')) {
+            $newGame->genres()->attach($data['genres']);
+        }
+
         return redirect()->route('games.show', $newGame->id);
     }
 
@@ -67,7 +80,10 @@ class GamesController extends Controller
      */
     public function edit(Game $game)
     {
-        return view('games.edit', compact('game'));
+        $platforms = Platform::all();
+        $genres = Genre::all();
+
+        return view('games.edit', compact('game', 'platforms', 'genres'));
     }
 
 
@@ -97,6 +113,18 @@ class GamesController extends Controller
 
         $game->update();
 
+        if ($request->has('platforms')) {
+            $game->platforms()->sync($data['platforms']);
+        } else {
+            $game->platforms()->detach();
+        }
+
+        if ($request->has('genres')) {
+            $game->genres()->sync($data['genres']);
+        } else {
+            $game->genres()->detach();
+        }
+
         return redirect()->route('games.show', $game->id);
     }
 
@@ -108,7 +136,11 @@ class GamesController extends Controller
         if ($game->cover_image) {
             Storage::delete($game->cover_image);
         }
+
+        $game->platforms()->detach();
+        $game->genres()->detach();
         $game->delete();
+
         return redirect()->route('games.index');
     }
 }

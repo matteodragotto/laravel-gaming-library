@@ -26,6 +26,29 @@
                 <input type="text" name="publisher" id="publisher" class="form-control" required>
             </div>
 
+
+            <h5>Piattaforme:</h5>
+            <div class="form-control mb-3 d-flex flex-wrap gap-3">
+                @foreach ($platforms as $platform)
+                    <div class="form-check">
+                        <input type="checkbox" name="platforms[]" id="platform_{{ $platform->id }}"
+                            value="{{ $platform->id }}" class="form-check-input">
+                        <label class="form-check-label" for="platform_{{ $platform->id }}">{{ $platform->name }}</label>
+                    </div>
+                @endforeach
+            </div>
+
+            <h5>Generi:</h5>
+            <div class="form-control mb-3 d-flex flex-wrap gap-3">
+                @foreach ($genres as $genre)
+                    <div class="form-check">
+                        <input type="checkbox" name="genres[]" id="genre_{{ $genre->id }}" value="{{ $genre->id }}"
+                            class="form-check-input">
+                        <label class="form-check-label" for="genre_{{ $genre->id }}">{{ $genre->name }}</label>
+                    </div>
+                @endforeach
+            </div>
+
             <div class="mb-3 d-flex flex-column">
                 <label for="description">Descrizione</label>
                 <textarea name="description" id="description" class="form-control" required></textarea>
