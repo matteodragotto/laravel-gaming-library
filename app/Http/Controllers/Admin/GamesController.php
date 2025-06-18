@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Game;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
@@ -35,18 +36,6 @@ class GamesController extends Controller
         $data = $request->all();
 
         $newGame = new Game();
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'release_date' => 'required|date',
-            'developer' => 'required|string|max:255',
-            'publisher' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'trailer_url' => 'nullable|url',
-        ]);
-
-        if (Game::where('slug', Str::slug($data['title']))->exists()) {
-            return redirect()->back()->withErrors(['title' => 'A game with this title already exists.']);
-        }
 
         $newGame->title = $data['title'];
         $newGame->release_date = $data['release_date'];
@@ -55,9 +44,14 @@ class GamesController extends Controller
         $newGame->description = $data['description'];
         $newGame->trailer_url = $data['trailer_url'];
         $newGame->slug = Str::slug($data['title']);
+
+        if (array_key_exists('cover_image', $data)) {
+            $img_url = Storage::putFile('games', $data['cover_image']);
+            $newGame->cover_image = $img_url;
+        }
         $newGame->save();
 
-        redirect()->route('games.show', $newGame->id);
+        return redirect()->route('games.show', $newGame->id);
     }
 
     /**
@@ -84,19 +78,6 @@ class GamesController extends Controller
     {
         $data = $request->all();
 
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'release_date' => 'required|date',
-            'developer' => 'required|string|max:255',
-            'publisher' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'trailer_url' => 'nullable|url',
-        ]);
-
-        if (Game::where('slug', Str::slug($data['title']))->where('id', '!=', $game->id)->exists()) {
-            return redirect()->back()->withErrors(['title' => 'A game with this title already exists.']);
-        }
-
         $game->title = $data['title'];
         $game->release_date = $data['release_date'];
         $game->developer = $data['developer'];
@@ -104,7 +85,17 @@ class GamesController extends Controller
         $game->description = $data['description'];
         $game->trailer_url = $data['trailer_url'];
         $game->slug = Str::slug($data['title']);
-        $game->save();
+
+        if ($request->hasFile('cover_image')) {
+            if ($game->cover_image) {
+                Storage::delete($game->cover_image);
+            }
+
+            $img_url = Storage::putFile('games', $request->file('cover_image'));
+            $game->cover_image = $img_url;
+        }
+
+        $game->update();
 
         return redirect()->route('games.show', $game->id);
     }
@@ -114,6 +105,9 @@ class GamesController extends Controller
      */
     public function destroy(Game $game)
     {
+        if ($game->cover_image) {
+            Storage::delete($game->cover_image);
+        }
         $game->delete();
         return redirect()->route('games.index');
     }

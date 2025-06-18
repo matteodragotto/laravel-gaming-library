@@ -15,7 +15,7 @@
             @foreach ($games as $game)
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
-                        <img src="{{ $game->cover_image }}" class="card-img-top" alt="{{ $game->title }}">
+                        <img src="{{ asset('storage/' . $game->cover_image) }}" class="card-img-top" alt="{{ $game->title }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $game->title }}</h5>
                             <p class="card-text">Data di rilascio: {{ $game->release_date }}</p>

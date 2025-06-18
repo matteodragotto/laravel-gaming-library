@@ -47,7 +47,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <img src="{{ $game->cover_image }}" class="img-fluid mb-4" alt="{{ $game->title }}">
+                @if ($game->cover_image)
+                    <div class="container">
+                        <img src="{{ asset('storage/' . $game->cover_image) }}" class="img-fluid mb-4"
+                            alt="{{ $game->title }}">
+                    </div>
+                @endif
                 <p>{{ $game->description }}</p>
             </div>
         </div>

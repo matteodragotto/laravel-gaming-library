@@ -21,7 +21,6 @@ class GamesTableSeeder extends Seeder
                 'developer' => 'Nintendo',
                 'publisher' => 'Nintendo',
                 'description' => 'An open-world action-adventure game set in the land of Hyrule.',
-                'cover_image' => 'https://example.com/zelda.jpg',
                 'trailer_url' => 'https://www.youtube.com/watch?v=1rPxiXXxftE',
             ],
             [
@@ -30,7 +29,6 @@ class GamesTableSeeder extends Seeder
                 'developer' => 'FromSoftware',
                 'publisher' => 'Bandai Namco Entertainment',
                 'description' => 'A fantasy action RPG developed in collaboration with George R. R. Martin.',
-                'cover_image' => 'https://example.com/eldenring.jpg',
                 'trailer_url' => 'https://www.youtube.com/watch?v=E3Huy2cdih0',
             ],
             [
@@ -39,7 +37,6 @@ class GamesTableSeeder extends Seeder
                 'developer' => 'Supergiant Games',
                 'publisher' => 'Supergiant Games',
                 'description' => 'A rogue-like dungeon crawler where you defy the god of the dead.',
-                'cover_image' => 'https://example.com/hades.jpg',
                 'trailer_url' => 'https://www.youtube.com/watch?v=591V2QwY9JY',
             ],
             [
@@ -48,7 +45,6 @@ class GamesTableSeeder extends Seeder
                 'developer' => 'Santa Monica Studio',
                 'publisher' => 'Sony Interactive Entertainment',
                 'description' => 'Kratos e Atreus si avventurano nei Nove Regni alla ricerca di risposte, mentre forze del caos si preparano al Ragnarök.',
-                'cover_image' => 'https://example.com/godofwar-ragnarok.jpg',
                 'trailer_url' => 'https://www.youtube.com/watch?v=EE-4GvjKcfs',
             ],
             [
@@ -57,7 +53,6 @@ class GamesTableSeeder extends Seeder
                 'developer' => 'Rockstar Games',
                 'publisher' => 'Rockstar Games',
                 'description' => 'Un’epica avventura western open-world che segue le gesta di Arthur Morgan e la banda di Van der Linde.',
-                'cover_image' => 'https://example.com/rdr2.jpg',
                 'trailer_url' => 'https://www.youtube.com/watch?v=eaW0tYpxyp0',
             ],
             [
@@ -66,7 +61,6 @@ class GamesTableSeeder extends Seeder
                 'developer' => 'Team Cherry',
                 'publisher' => 'Team Cherry',
                 'description' => 'Un metroidvania atmosferico che esplora il regno sotterraneo di Hallownest.',
-                'cover_image' => 'https://example.com/hollowknight.jpg',
                 'trailer_url' => 'https://www.youtube.com/watch?v=UAO2urG23S4',
             ],
             [
@@ -75,7 +69,6 @@ class GamesTableSeeder extends Seeder
                 'developer' => 'CD Projekt RED',
                 'publisher' => 'CD Projekt',
                 'description' => 'Un RPG futuristico ambientato nella vibrante metropoli di Night City.',
-                'cover_image' => 'https://example.com/cyberpunk2077.jpg',
                 'trailer_url' => 'https://www.youtube.com/watch?v=FknHjl7eQ6o',
             ],
             [
@@ -84,7 +77,6 @@ class GamesTableSeeder extends Seeder
                 'developer' => 'ConcernedApe',
                 'publisher' => 'ConcernedApe',
                 'description' => 'Un simulatore di vita rurale dove coltivi, peschi, mini e stringi relazioni.',
-                'cover_image' => 'https://example.com/stardewvalley.jpg',
                 'trailer_url' => 'https://www.youtube.com/watch?v=ot7uXNQskhs',
             ],
             [
@@ -93,7 +85,6 @@ class GamesTableSeeder extends Seeder
                 'developer' => 'ZA/UM',
                 'publisher' => 'ZA/UM',
                 'description' => 'Un RPG investigativo con una forte enfasi sulla narrazione e il dialogo.',
-                'cover_image' => 'https://example.com/discoelysium.jpg',
                 'trailer_url' => 'https://www.youtube.com/watch?v=Ff0a5jlZf5Q',
             ],
             [
@@ -102,7 +93,6 @@ class GamesTableSeeder extends Seeder
                 'developer' => 'Nintendo',
                 'publisher' => 'Nintendo',
                 'description' => 'Mario parte per una nuova avventura intorno al mondo con Cappy, il suo nuovo compagno.',
-                'cover_image' => 'https://example.com/supermarioodyssey.jpg',
                 'trailer_url' => 'https://www.youtube.com/watch?v=5kcdRBHM7kM',
             ]
         ];
@@ -114,7 +104,6 @@ class GamesTableSeeder extends Seeder
             $newGame->developer = $game['developer'];
             $newGame->publisher = $game['publisher'];
             $newGame->description = $game['description'];
-            $newGame->cover_image = $game['cover_image'];
             $newGame->trailer_url = $game['trailer_url'];
             $newGame->slug = Str::slug($game['title']);
             $newGame->save();
