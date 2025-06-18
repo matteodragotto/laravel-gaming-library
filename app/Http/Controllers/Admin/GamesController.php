@@ -82,7 +82,31 @@ class GamesController extends Controller
      */
     public function update(Request $request, Game $game)
     {
-        //
+        $data = $request->all();
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'release_date' => 'required|date',
+            'developer' => 'required|string|max:255',
+            'publisher' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'trailer_url' => 'nullable|url',
+        ]);
+
+        if (Game::where('slug', Str::slug($data['title']))->where('id', '!=', $game->id)->exists()) {
+            return redirect()->back()->withErrors(['title' => 'A game with this title already exists.']);
+        }
+
+        $game->title = $data['title'];
+        $game->release_date = $data['release_date'];
+        $game->developer = $data['developer'];
+        $game->publisher = $data['publisher'];
+        $game->description = $data['description'];
+        $game->trailer_url = $data['trailer_url'];
+        $game->slug = Str::slug($data['title']);
+        $game->save();
+
+        return redirect()->route('games.show', $game->id);
     }
 
     /**

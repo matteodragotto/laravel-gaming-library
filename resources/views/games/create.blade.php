@@ -36,7 +36,7 @@
                 <input type="text" name="trailer_url" id="trailer_url" class="form-control" required>
             </div>
 
-            <input type="submit" value="Crea progetto" class="btn btn-primary">
+            <input type="submit" value="Inserisci gioco" class="btn btn-primary">
 
 
 
