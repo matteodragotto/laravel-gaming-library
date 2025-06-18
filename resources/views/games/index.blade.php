@@ -6,6 +6,8 @@
     <div class="container text-center my-4">
         <h1>Games</h1>
         <p>Welcome to the games page!</p>
+        <a href="{{ route('games.create') }}" class="btn btn-primary">Aggiungi gioco</a>
+
     </div>
 
     <div class="container">
