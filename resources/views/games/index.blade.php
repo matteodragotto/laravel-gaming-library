@@ -1,33 +1,46 @@
 @extends('layouts.games')
 
-@section('title, Games')
+@section('title', 'Games')
 
 @section('content')
-    <div class="container text-center my-4">
-        <h1>Benvenuto nella pagina di gestione della libreria giochi</h1>
+    <header class="d-flex justify-content-around align-items-center my-4">
+        <h1>Libreria giochi</h1>
+        <a href="{{ route('dashboard') }}" class="btn btn-primary">Vai alla dashboard</a>
+
+
+    </header>
+
+    <div class="container border border-secondary-subtle rounded p-5">
         <a href="{{ route('games.create') }}" class="btn btn-primary">Aggiungi gioco</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Immagine</th>
+                    <th scope="col">Titolo</th>
+                    <th scope="col">Data di rilascio</th>
+                    <th scope="col">Sviluppatore</th>
+                    <th scope="col"></th>
 
-    </div>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($games as $game)
+                    <tr>
+                        <th scope="row align-middle"><img src="{{ asset('storage/' . $game->cover_image) }}" class="w-25"
+                                alt="{{ $game->title }}"></th>
+                        <td class="align-middle">{{ $game->title }}</td>
+                        <td class="align-middle">{{ $game->release_date }}</td>
+                        <td class="align-middle">{{ $game->developer }}</td>
+                        <td class="align-middle">
+                            <div class="d-flex justify-content-center align-items-center gap-3">
+                                <a href="{{ route('games.show', $game) }}" class="btn btn-primary">Dettagli</a>
+                                <a class="btn btn-warning" href="{{ route('games.edit', $game) }}">Modifica</a>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal{{ $game->id }}">
+                                    Elimina
+                                </button>
+                            </div>
 
-    <div class="container">
-        <div class="row">
-            @foreach ($games as $game)
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img src="{{ asset('storage/' . $game->cover_image) }}" class="card-img-top" alt="{{ $game->title }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $game->title }}</h5>
-                            <p class="card-text">Data di rilascio: {{ $game->release_date }}</p>
-                            <p class="card-text">Sviluppatore: {{ $game->developer }}</p>
-
-
-                            <a href="{{ route('games.show', $game) }}" class="btn btn-primary">Dettagli</a>
-                            <a class="btn btn-warning" href="{{ route('games.edit', $game) }}">Modifica</a>
-
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal{{ $game->id }}">
-                                Elimina
-                            </button>
 
                             <!-- Modal -->
                             <div class="modal fade" id="deleteModal{{ $game->id }}" tabindex="-1"
@@ -55,9 +68,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+
     </div>

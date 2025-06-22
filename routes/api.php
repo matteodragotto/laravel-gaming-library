@@ -12,3 +12,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/games', [GameController::class, 'index']);
 
 Route::get('/games/{game}', [GameController::class, 'show']);
+
+Route::get('/genres', [GameController::class, 'genres']);
+
+Route::get('/search', [GameController::class, 'search']);
+
+Route::get('/platforms', [GameController::class, 'platforms']);
