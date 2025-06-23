@@ -12,7 +12,7 @@ class GameController extends Controller
 {
     public function index()
     {
-        $games = Game::with('genres')->simplePaginate(8);
+        $games = Game::orderBy('title')->with('genres')->simplePaginate(8);
         return response()->json(
             [
                 'success' => true,

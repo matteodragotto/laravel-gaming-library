@@ -17,11 +17,16 @@
                             </div>
                         @endif
 
-                        {{ __('You are logged in!') }}
+                        {{ __('Hai effettuato il login!') }}
 
-                        <a href="{{ route('games.index') }}" class="btn btn-primary">Vai alla libreria giochi</a>
                     </div>
+                    <a href="{{ route('games.index') }}" class="btn btn-primary m-2">Gestine Libreria Giochi</a>
+                    <a href="{{ route('genres.index') }}" class="btn btn-primary m-2">Gestione Generi</a>
+                    <a href="{{ route('platforms.index') }}" class="btn btn-primary m-2">Gestione Piattaforme</a>
+
+
                 </div>
+
             </div>
         </div>
     </div>

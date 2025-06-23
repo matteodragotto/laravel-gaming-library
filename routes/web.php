@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GamesController;
+use App\Http\Controllers\Admin\GenreController;
+use App\Http\Controllers\Admin\PlatformController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +33,16 @@ Route::middleware(['auth', 'verified'])
 
 
 Route::resource('games', GamesController::class)
+    ->middleware(
+        ['auth', 'verified']
+    );
+
+Route::resource('genres', GenreController::class)
+    ->middleware(
+        ['auth', 'verified']
+    );
+
+Route::resource('platforms', PlatformController::class)
     ->middleware(
         ['auth', 'verified']
     );
