@@ -1,6 +1,6 @@
 @extends('layouts.games')
 
-@section('title', 'Games')
+@section('title', 'Libreria Giochi')
 
 @section('content')
     <header class="d-flex justify-content-around align-items-center my-4">
@@ -10,7 +10,7 @@
 
     </header>
 
-    <div class="container border border-secondary-subtle rounded p-5">
+    <div class="container border border-secondary-subtle rounded p-5 mb-3">
         <a href="{{ route('games.create') }}" class="btn btn-primary">Aggiungi gioco</a>
         <table class="table">
             <thead>
@@ -33,9 +33,9 @@
                         <td class="align-middle">{{ $game->developer }}</td>
                         <td class="align-middle">
                             <div class="d-flex justify-content-center align-items-center gap-3">
-                                <a href="{{ route('games.show', $game) }}" class="btn btn-primary">Dettagli</a>
-                                <a class="btn btn-warning" href="{{ route('games.edit', $game) }}">Modifica</a>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                <a href="{{ route('games.show', $game) }}" class="btn btn-outline-primary">Dettagli</a>
+                                <a class="btn btn-outline-warning" href="{{ route('games.edit', $game) }}">Modifica</a>
+                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal{{ $game->id }}">
                                     Elimina
                                 </button>

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Create a New Game</h1>
+        <h1>Inserisci un nuovo gioco</h1>
         <form action="{{ route('games.store') }}" method="POST" enctype="multipart/form-data" class="form-control">
             @csrf
 
@@ -64,7 +64,8 @@
                 <input type="text" name="trailer_url" id="trailer_url" class="form-control" required>
             </div>
 
-            <input type="submit" value="Inserisci gioco" class="btn btn-primary">
+            <input type="submit" value="Inserisci gioco" class="btn btn-outline-primary">
+            <a href="{{ route('games.index') }}" class="btn btn-outline-danger">Annulla e torna alla libreria</a>
 
 
 

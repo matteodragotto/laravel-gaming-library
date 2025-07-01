@@ -40,22 +40,23 @@
             </div>
         </div>
 
-        <p>Data di rilascio: {{ $game->release_date }}</p>
-        <p>Sviluppatore: {{ $game->developer }}</p>
     </div>
 
-    <div class="container">
+    <div class="container text-center">
         <div class="row">
             <div class="col-md-12">
                 @if ($game->cover_image)
-                    <div class="container">
+                    <div class="container w-50">
                         <img src="{{ asset('storage/' . $game->cover_image) }}" class="img-fluid mb-4"
-                            alt="{{ $game->title }}">
+                            alt="{{ $game->title }}" style="object-fit: fill; width: 100%;">
                     </div>
                 @endif
+
+                <p><strong>Data di rilascio</strong>: {{ $game->release_date }}</p>
+                <p><strong>Sviluppatore</strong>: {{ $game->developer }}</p>
                 @if (count($game->platforms) > 0)
                     <small>
-                        Piattaforme:
+                        <strong>Piattaforme</strong>:
                         @foreach ($game->platforms as $platform)
                             <span class="badge"
                                 style="background-color: {{ $platform->color }}">{{ $platform->name }}</span>
@@ -64,13 +65,13 @@
                 @endif
                 @if (count($game->genres) > 0)
                     <p>
-                        Generi:
+                        <strong>Generi</strong>:
                         @foreach ($game->genres as $genre)
                             <span class="badge text-bg-dark">{{ $genre->name }}</span>
                         @endforeach
                     </p>
                 @endif
-                <p>{{ $game->description }}</p>
+                <p><strong>Descrizione</strong>: {{ $game->description }}</p>
 
 
             </div>

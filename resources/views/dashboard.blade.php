@@ -20,7 +20,7 @@
                         {{ __('Hai effettuato il login!') }}
 
                     </div>
-                    <a href="{{ route('games.index') }}" class="btn btn-primary m-2">Gestine Libreria Giochi</a>
+                    <a href="{{ route('games.index') }}" class="btn btn-primary m-2">Gestione Libreria Giochi</a>
                     <a href="{{ route('genres.index') }}" class="btn btn-primary m-2">Gestione Generi</a>
                     <a href="{{ route('platforms.index') }}" class="btn btn-primary m-2">Gestione Piattaforme</a>
 
