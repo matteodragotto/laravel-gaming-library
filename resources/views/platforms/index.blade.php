@@ -32,7 +32,7 @@
         <ul class="list-group">
             @foreach ($platforms as $platform)
                 <li class="list-group-item d-flex justify-content-between">{{ $platform->name }}
-                    <form action="{{ route('genres.destroy', $platform->id) }}" method="POST" class="d-inline">
+                    <form action="{{ route('platforms.destroy', $platform->id) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm">Elimina</button>
